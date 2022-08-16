@@ -1,0 +1,15 @@
+<% if !current_user.admin %>
+<h1>Welcome, please find our best attractions below!</h1>
+<% @attractions.each do |atr| %>
+    <%= link_to "Go on #{atr.name}", attraction_path(atr) %><br>
+<% end %>
+<% end %>
+
+<% if current_user.admin %>
+    <% @attractions.each do |atr| %>
+        <%= link_to "Show #{atr.name}", attraction_path(atr) %><br>
+    <% end %><br>
+    <%= link_to "New Attraction", new_attraction_path %>
+<% end %>
+
+
